@@ -15,13 +15,13 @@ RUN apt-get update \
     && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
     && apt-get remove --purge -y software-properties-common \
     && apt-get update \
-    && apt-get install -y php8.0 php8.0-fpm php8.0-dev \
-       php8.0-gd php8.0-curl php8.0-bz2 php8.0-bcmath \
-       php8.0-imap php8.0-mysql php8.0-mbstring \
-       php8.0-xml php8.0-zip php8.0-soap \
-       php8.0-intl php8.0-readline \
-       php8.0-msgpack php8.0-igbinary php8.0-ldap \
-       php8.0-redis \
+    && apt-get install -y php7.4 php7.4-fpm php7.4-dev \
+       php7.4-gd php7.4-curl php7.4-bz2 php7.4-bcmath \
+       php7.4-imap php7.4-mysql php7.4-mbstring \
+       php7.4-xml php7.4-zip php7.4-soap \
+       php7.4-intl php7.4-readline \
+       php7.4-msgpack php7.4-igbinary php7.4-ldap \
+       php7.4-redis \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && apt-get -y autoremove \
     && apt-get clean \
@@ -29,10 +29,10 @@ RUN apt-get update \
 
 RUN mkdir -p /run/php && chown www-data:www-data /run/php
 
-COPY conf /etc/php/8.0/fpm/pool.d/
+COPY conf /etc/php/7.4/fpm/pool.d/
 
 RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
 
 EXPOSE 9000
-CMD ["php-fpm8.0"]
+CMD ["php-fpm7.4"]
