@@ -30,6 +30,7 @@ RUN apt-get update \
 RUN mkdir -p /run/php && chown www-data:www-data /run/php
 
 COPY conf /etc/php/7.4/fpm/pool.d/
+COPY php.ini /etc/php/7.4/fpm/php.ini
 
 RUN mkdir -p /var/www/html
 WORKDIR /var/www/html
