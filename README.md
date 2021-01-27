@@ -1,12 +1,26 @@
 # PHP Docker images
 
-The images are minimalistic and ready for production (no node, npm, xdebug etc). Opcache is enabled by default. 
+The docker images are divided into two:
 
-## Images
+* Production 
+* Local development
 
--	[viezel/php:7.4](https://github.com/viezel/php/blob/master/php/7.4/fpm/Dockerfile)
--	[viezel/php:8.0](https://github.com/viezel/php/blob/master/php/8.0/fpm/Dockerfile)
+## Production Docker images
 
+These images are minimalistic and ready for production (no node, npm, xdebug etc). Opcache is enabled by default. 
+
+-	[viezel/php:7.4](https://github.com/viezel/php/blob/master/7.4/fpm/Dockerfile)
+-	[viezel/php:8.0](https://github.com/viezel/php/blob/master/8.0/fpm/Dockerfile)
+
+
+## Local development Docker images
+
+These images are created for local development. Xdebug, Node and Yarn are all included. no opcache. 
+
+-	[viezel/php-dev:7.4](https://github.com/viezel/php/blob/master/7.4/dev/Dockerfile)
+-	[viezel/php-dev:8.0](https://github.com/viezel/php/blob/master/8.0/dev/Dockerfile)
+
+Can be used together with [Dock a easy docker cli](https://github.com/viezel/dock) tuned for Laravel Development.
 
 ## How to build
 
@@ -17,35 +31,3 @@ cd 8.0/fpm
 docker build --no-cache -t viezel/php:8.0 -f Dockerfile .
 docker push viezel/php:8.0
 ```
-
-
-
-# How to use for Development
-
-Since the image is optimized for production, then we need to change settings to use in development.
-
-You need two extra files: `Dockerfile` and `startup.sh`.
-
-### Dockerfile
-
-``` 
-FROM viezel/php:8.0
-
-COPY startup.sh /usr/bin/startup
-
-ENTRYPOINT [ "bash" ]
-CMD ["/usr/bin/startup"]
-``` 
-
-### startup.sh
-
-``` 
-#!/bin/bash
-
-set -e
-
-# disable opcache
-sed -i -e "s/opcache.enable=1/opcache.enable=0/" /etc/php/8.0/fpm/php.ini
-
-php-fpm8.0
-``` 
