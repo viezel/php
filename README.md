@@ -5,6 +5,13 @@ The docker images are divided into two:
 * Production 
 * Local development
 
+## Swoole development Docker images
+
+Uses [Swoole Web server](https://www.swoole.co.uk) with Nginx in front. Node, npm, yarn is also included.
+
+-	[viezel/php-dev-swoole:8.0](https://github.com/viezel/php/blob/master/8.0/dev-swoole/Dockerfile)
+
+
 ## Production Docker images
 
 These images are minimalistic and ready for production (no node, npm, xdebug etc). Opcache is enabled by default. 
