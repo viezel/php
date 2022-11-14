@@ -29,6 +29,7 @@ These images are created for local development. Xdebug, Node and Yarn are all in
 -	[viezel/php-dev:7.4](https://github.com/viezel/php/blob/master/7.4/dev/Dockerfile)
 -	[viezel/php-dev:8.0](https://github.com/viezel/php/blob/master/8.0/dev/Dockerfile)
 -	[viezel/php-dev:8.1](https://github.com/viezel/php/blob/master/8.1/dev/Dockerfile)
+-	[viezel/php-dev:8.2](https://github.com/viezel/php/blob/master/8.2/dev/Dockerfile)
 
 Can be used together with [Dock a easy docker cli](https://github.com/viezel/dock) tuned for Laravel Development.
 
